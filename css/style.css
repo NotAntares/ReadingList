@@ -6,17 +6,20 @@
 body{
     background-color: #dcedee;
     height: 100vh;
-    padding: 0 30px;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    gap: 20px;
+    align-items: flex-end;
+    
 }
 
 .maxwidth{
-    max-width: 1400px;
+    max-width: 1200px;
     width: 100%;
     margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    
 }
 
 p{
@@ -43,10 +46,9 @@ button:hover{
 }
 
 header{
-    padding: 30px 0 20px 0;
+    padding-bottom: 20px;
     color:#453029;
     display: flex;
-    gap: 100px;
     align-items: center;
     justify-content: space-between;
 }
@@ -100,25 +102,25 @@ form div{
 
 /* library */
 
+.library{
+    display: grid;
+    grid-template-rows: 1fr auto 1fr auto;
+    border: 5px solid #453029;
+    box-shadow: 3px 3px 10px rgba(34, 34, 34, .2);
+    height:88vh;
+    background-color: rgb(241, 213, 176);
+}
+
 .shelf, .pile{
     display: flex;
     align-items: flex-end;
     overflow-x: auto;
     scrollbar-color: #a95f48 #453029;
-    /* padding: 30px 0 0 30px; */
-    background-color: rgb(241, 213, 176);
     
 }
 
 .shelf{
     grid-row: 1/2;
-}
-
-.library{
-    display: grid;
-    grid-template-rows: 350px auto 350px auto;
-    border: 5px solid #453029;
-    box-shadow: 3px 3px 10px rgba(34, 34, 34, .2);
 }
 
 .board{
