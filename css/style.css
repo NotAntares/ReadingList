@@ -31,7 +31,7 @@ button{
     border: 3px solid #efa347;
     border-radius: 3px;
     background-color: #efa347;
-    padding: 10px 30px;
+    padding: 5px 30px;
     font-size: 16px;
     font-weight: 600;
     color:#222;
@@ -55,7 +55,7 @@ header{
 
 h1{
     margin: 0;
-    font-size: 46px;
+    font-size: 40px;
 }
 
 /* Dialog Form to add books */
@@ -125,7 +125,7 @@ form div{
 
 .board{
     background-color: #453029;
-    height: 40px;
+    height: 34px;
     width: 100%;
     display:flex;
     align-items: center;
@@ -175,9 +175,9 @@ h3{
     font-size: 18px;
 }
 
-.board h2{
+h2{
     color: #d19e52;
     background-color: #222;
-    padding: 5px 10px;
-    font-size: 24px;
+    padding: 3px 10px;
+    font-size: 22px;
 }
