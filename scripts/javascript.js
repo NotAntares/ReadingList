@@ -55,11 +55,20 @@ function toShelf(book){
         pile.appendChild(addShelf);
     }
 
+    addShelf.addEventListener('click', ()=>{
+        let remove = confirm(`Do you want to delete ${book.title} from your library?`);
+        if(remove === true){
+            deleteBookFromLibrary(book);
+            console.log(book.author);
+            addShelf.remove();
+        }
+    });
+
 }
 
 function randomHsl(){
     return( 'hsla(' +(Math.floor(Math.random()*360)) +', ' + ( 0.5 + (Math.random()/2)).toFixed(2)*100 + '%, ' + 25 +'%, ' + 0.5 + ')');
-}
+};
 
 // initializing library
 
@@ -69,12 +78,16 @@ const achilles = new Book("Song of Achilles","Madeline Miller","416", true);
 
 const naruto = new Book("Naruto Volume 01","Masashi Kishimoto","192", false);
 
+function deleteBookFromLibrary(book){
+    console.log(book.title);
+};
+
 
 function addStartBooks() {
     addBookToLibrary(hobbit);
     addBookToLibrary(achilles);
     addBookToLibrary(naruto);
-}
+};
 
 addStartBooks();
 
