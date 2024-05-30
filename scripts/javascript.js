@@ -48,7 +48,7 @@ function toShelf(book){
     const title = addShelf.appendChild(document.createElement("h3"));
 
     addShelf.style.width = book.pages/5 + "px";
-    addShelf.style.height = Math.floor(Math.random() * 80) + 260 + "px";
+    addShelf.style.height = Math.floor(Math.random() * 60) + 240 + "px";
     addShelf.style.backgroundColor = randomHsl();
     addShelf.className = "books"
     title.textContent = book.title;
