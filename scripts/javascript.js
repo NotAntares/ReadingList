@@ -11,6 +11,8 @@ const state = document.getElementById("state");
 const shelf = document.querySelector(".shelf");
 const pile = document.querySelector(".pile");
 
+// button functions
+
 addBook.addEventListener('click',()=>{
     dialog.show();
 });
@@ -22,6 +24,7 @@ submitBook.addEventListener('click',()=>{
 
 });
 
+// book constructor
 
 function Book(title, author, pages, state){
     this.title = title;
@@ -59,7 +62,6 @@ function toShelf(book){
         let remove = confirm(`Do you want to delete ${book.title} from your library?`);
         if(remove === true){
             deleteBookFromLibrary(book);
-            console.log(book.author);
             addShelf.remove();
         }
     });
@@ -70,6 +72,14 @@ function randomHsl(){
     return( 'hsla(' +(Math.floor(Math.random()*360)) +', ' + ( 0.5 + (Math.random()/2)).toFixed(2)*100 + '%, ' + 25 +'%, ' + 0.5 + ')');
 };
 
+function deleteBookFromLibrary(book){
+    const index = myLibrary.map(function(e) {
+        return e.title;
+      }).indexOf(book.title);
+      myLibrary.splice(index,1);
+    
+};
+
 // initializing library
 
 const hobbit = new Book("The Hobbit","J.R.R. Tolkien","295", true);
@@ -77,11 +87,6 @@ const hobbit = new Book("The Hobbit","J.R.R. Tolkien","295", true);
 const achilles = new Book("Song of Achilles","Madeline Miller","416", true);
 
 const naruto = new Book("Naruto Volume 01","Masashi Kishimoto","192", false);
-
-function deleteBookFromLibrary(book){
-    console.log(book.title);
-};
-
 
 function addStartBooks() {
     addBookToLibrary(hobbit);
