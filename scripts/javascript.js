@@ -24,17 +24,29 @@ submitBook.addEventListener('click',()=>{
 
 });
 
-// book constructor
 
-function Book(title, author, pages, state){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.state = state;
-    this.info = function() {
+
+// classes bitches
+
+class Book {
+    constructor(title, author, pages, state){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.state = state;
+
+        this.color = ( 'hsla(' +(Math.floor(Math.random()*360)) +', ' + ( 0.5 + (Math.random()/2)).toFixed(2)*100 + '%, ' + 25 +'%, ' + 0.5 + ')');
+
+        this.height = Math.floor(Math.random() * 60) + 240 + "px";
+
+        this.width = this.pages/5 + "px";
+    }
+
+    info() {
         return title + " by " + author + ", " + pages + ", " + state;
     }
 }
+
 
 function addBookToLibrary(book) {
     
@@ -47,9 +59,9 @@ function toShelf(book){
     const author = addShelf.appendChild(document.createElement("h4"));
     const title = addShelf.appendChild(document.createElement("h3"));
 
-    addShelf.style.width = book.pages/5 + "px";
-    addShelf.style.height = Math.floor(Math.random() * 60) + 240 + "px";
-    addShelf.style.backgroundColor = randomHsl();
+    addShelf.style.width = book.width;
+    addShelf.style.height = book.height;
+    addShelf.style.backgroundColor = book.color;
     addShelf.className = "books"
     title.textContent = book.title;
     author.textContent = book.author;
@@ -67,10 +79,6 @@ function toShelf(book){
     });
 
 }
-
-function randomHsl(){
-    return( 'hsla(' +(Math.floor(Math.random()*360)) +', ' + ( 0.5 + (Math.random()/2)).toFixed(2)*100 + '%, ' + 25 +'%, ' + 0.5 + ')');
-};
 
 function deleteBookFromLibrary(book){
     const index = myLibrary.map(function(e) {
@@ -95,5 +103,3 @@ function addStartBooks() {
 };
 
 addStartBooks();
-
-console.log(myLibrary);
