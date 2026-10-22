@@ -8,17 +8,17 @@ const author = document.getElementById("author");
 const pages = document.getElementById("pages");
 const state = document.getElementById("state");
 
+class Book {
 
-function Book(title, author, pagecount, read, id) {
-    this.title = title;
-    this.author = author;
-    this.pagecount = pagecount;
-    this.read = read;
-    this.id = id;
-}
+    constructor(title, author, pagecount, read, id) {
+        this.title = title;
+        this.author = author;
+        this.pagecount = pagecount;
+        this.read = read;
+        this.id = id;
+    }
 
-Book.prototype.toggleRead = function() { 
-    console.log(this.id)
+    toggleRead() {
     this.read = !this.read;
     const book = document.querySelector(`[data-id="${this.id}"]`);
     
@@ -30,14 +30,15 @@ Book.prototype.toggleRead = function() {
         shame.appendChild(book);
         book.querySelectorAll("button")[1].textContent = "tbr";
     }
-};
+    }
 
-Book.prototype.deleteBook = function() {
-    const book = document.querySelector(`[data-id="${this.id}"]`);
-    book.remove();
-    myLibrary.splice(myLibrary.findIndex(book => book.id === this.id), 1);
-    console.log(myLibrary);
+    deleteBook() {
+        const book = document.querySelector(`[data-id="${this.id}"]`);
+        book.remove();
+        myLibrary.splice(myLibrary.findIndex(book => book.id === this.id), 1);
+    }
 }
+    
 
 function addBookToLibrary(title, author, pagecount, read) {
     let newBook = new Book(title, author, pagecount, read, crypto.randomUUID());
@@ -51,8 +52,7 @@ addBookToLibrary("Naruto Volume 01", "Masashi Kishimoto", 192, false);
 
 
 submit.onclick= () => {
-    console.log("submit")
-    addBookToLibrary(title.value, author.value, pages.value, state.value)
+    addBookToLibrary(title.value, author.value, pages.value, state.checked)
     const a = myLibrary.length -1;
     displayBook(a)
 }
@@ -78,7 +78,6 @@ function getDate() {
 }
 
 function displayBook(i) {
-        // console.log(book);
         const book = document.createElement("div");
         const deleteButton = book.appendChild(document.createElement("button"));
         const info = book.appendChild(document.createElement("article"));
@@ -97,7 +96,6 @@ function displayBook(i) {
         if (myLibrary[i].read === true) {
             finished.appendChild(book);
             toggle.textContent = "fin";
-            console.log("read")
         } else {
             shame.appendChild(book);
             toggle.textContent = "tbr";
